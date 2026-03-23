@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="display:flex; justify-content:center; align-items:center; height:100vh; background:#0f172a;">
+
+<div style="background:#1e293b; padding:40px; border-radius:12px; width:350px;">
+  <h2 style="color:white; text-align:center;">Login</h2>
+
+  <input type="text" id="username" placeholder="Username" style="width:100%; margin:10px 0; padding:10px;">
+  <input type="password" id="password" placeholder="Password" style="width:100%; margin:10px 0; padding:10px;">
+
+  <button onclick="login()" style="width:100%; padding:10px; background:#4a90d9; color:white;">Login</button>
+
+  <p style="color:white; text-align:center; margin-top:10px;">
+    No account? <a href="signup.html">Sign up</a>
+  </p>
+</div>
+
+<script>
+function login() {
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+
+  if(user && pass){
+    localStorage.setItem("loggedIn", "true");
+    window.location.href = "planner.html";
+  } else {
+    alert("Invalid login");
+  }
+}
+</script>
+
+</body>
+</html>

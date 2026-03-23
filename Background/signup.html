@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Signup</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="display:flex; justify-content:center; align-items:center; height:100vh; background:#0f172a;">
+
+<div style="background:#1e293b; padding:40px; border-radius:12px; width:350px;">
+  <h2 style="color:white; text-align:center;">Sign Up</h2>
+
+  <input type="text" id="username" placeholder="Username" style="width:100%; margin:10px 0; padding:10px;">
+  <input type="password" id="password" placeholder="Password" style="width:100%; margin:10px 0; padding:10px;">
+
+  <button onclick="signup()" style="width:100%; padding:10px; background:#4a90d9; color:white;">Sign Up</button>
+
+  <p style="color:white; text-align:center; margin-top:10px;">
+    Already have account? <a href="login.html">Login</a>
+  </p>
+</div>
+
+<script>
+function signup() {
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+
+  if(user && pass){
+    alert("Account created!");
+    window.location.href = "login.html";
+  } else {
+    alert("Fill all fields");
+  }
+}
+</script>
+
+</body>
+</html>
