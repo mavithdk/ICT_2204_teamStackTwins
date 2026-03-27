@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Study Planner – Contact Us</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg-dark: #0d0f1a; --bg-card: #13162a; --bg-card2: #1a1d2e;
+      --accent: #6c63ff; --accent2: #a855f7; --text-muted: #8b8fa8; --border: #2a2d3e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: var(--bg-dark); color: #fff; }
+
+    /* ── NAVBAR ── */
+    .navbar { background: rgba(13,15,26,0.97) !important; border-bottom: 1px solid var(--border); padding: 14px 0; position: sticky; top: 0; z-index: 999; backdrop-filter: blur(10px); }
+    .navbar-brand { font-weight: 700; font-size: 1.1rem; color: #fff !important; display: flex; align-items: center; gap: 8px; }
+    .brand-logo { width: 28px; height: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .brand-logo span { border-radius: 3px; }
+    .brand-logo span:nth-child(1){background:#4ade80} .brand-logo span:nth-child(2){background:#f97316}
+    .brand-logo span:nth-child(3){background:#3b82f6} .brand-logo span:nth-child(4){background:#a855f7}
+    .nav-link { color: var(--text-muted) !important; font-size: 0.9rem; font-weight: 500; padding: 6px 14px !important; transition: color 0.2s; }
+    .nav-link:hover { color: #fff !important; }
+    .nav-link.active { background: rgba(255,255,255,0.08); border-radius: 8px; color: #fff !important; }
+    .btn-get-started { background: linear-gradient(135deg, var(--accent), var(--accent2)); border: none; border-radius: 50px; padding: 8px 22px; font-size: 0.9rem; font-weight: 600; color: #fff; text-decoration: none; transition: opacity 0.2s, transform 0.2s; }
+    .btn-get-started:hover { opacity: 0.85; color: #fff; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .page-hero { position: relative; padding: 80px 0 55px; overflow: hidden; text-align: center;
+      background: url('images/contact.jpg') center center / cover no-repeat; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,15,40,0.82) 0%, rgba(30,10,60,0.75) 60%, rgba(10,30,50,0.80) 100%); pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3); border-radius: 50px; padding: 6px 18px; font-size: 0.78rem; color: #a89fff; margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 800; margin-bottom: 14px; line-height: 1.2; }
+    .page-hero h1 span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 520px; margin: 0 auto 28px; line-height: 1.7; }
+    .hero-cards { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
+    .hero-pill { display: flex; align-items: center; gap: 8px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 50px; padding: 8px 18px; font-size: 0.8rem; color: var(--text-muted); }
+    .hero-pill span { font-size: 1rem; }
+
+    /* ── FORM CARD ── */
+    .form-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 42px; position: relative; overflow: hidden; }
+    .form-card::before { content: ''; position: absolute; top: -80px; right: -80px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(108,99,255,0.07), transparent 70%); border-radius: 50%; pointer-events: none; }
+    .form-card::after { content: ''; position: absolute; bottom: -60px; left: -60px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(168,85,247,0.05), transparent 70%); border-radius: 50%; pointer-events: none; }
+    .form-section-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .form-section-title .icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .form-subtitle { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 28px; margin-left: 48px; }
+
+    .form-label { font-size: 0.82rem; color: #d0d2e0; margin-bottom: 7px; font-weight: 500; display: flex; align-items: center; gap: 5px; }
+    .req { color: #ef4444; }
+    .form-control, .form-select {
+      background: var(--bg-card2) !important; border: 1.5px solid var(--border) !important;
+      color: #fff !important; border-radius: 12px; font-size: 0.88rem; padding: 12px 16px;
+      transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    }
+    .form-control::placeholder { color: #3a3d52; }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--accent) !important;
+      box-shadow: 0 0 0 4px rgba(108,99,255,0.13) !important;
+      background: #1e213a !important; outline: none;
+    }
+    .form-select option { background: #13162a; color: #fff; }
+    textarea.form-control { resize: vertical; min-height: 145px; }
+    .input-hint { font-size: 0.74rem; color: #4a4d62; margin-top: 5px; }
+    .char-count { font-size: 0.74rem; color: var(--text-muted); margin-top: 5px; text-align: right; }
+    .char-count .cnt { color: var(--accent); font-weight: 700; }
+    .char-warning { color: #f59e0b !important; }
+    .char-danger { color: #ef4444 !important; }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: none; border-radius: 13px; padding: 15px 32px;
+      font-weight: 700; font-size: 0.94rem; color: #fff;
+      cursor: pointer; width: 100%; margin-top: 8px;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(108,99,255,0.4); }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit .send-icon { font-size: 1rem; transition: transform 0.2s; }
+    .btn-submit:hover .send-icon { transform: translateX(4px); }
+
+    .error-msg { display: none; color: #ef4444; font-size: 0.75rem; margin-top: 5px; display: flex; align-items: center; gap: 4px; }
+    .error-msg.show { display: flex; }
+    .field-error { border-color: #ef4444 !important; box-shadow: 0 0 0 3px rgba(239,68,68,0.1) !important; }
+
+    /* ── SUCCESS ── */
+    .success-banner {
+      background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(6,182,212,0.07));
+      border: 1px solid rgba(34,197,94,0.25); border-radius: 16px;
+      padding: 20px 22px; display: none; align-items: flex-start; gap: 14px; margin-bottom: 26px;
+    }
+    .success-banner.show { display: flex; animation: slideDown 0.45s cubic-bezier(0.16,1,0.3,1); }
+    @keyframes slideDown { from{opacity:0;transform:translateY(-16px) scale(0.98)} to{opacity:1;transform:translateY(0) scale(1)} }
+    .success-icon { width: 44px; height: 44px; background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .success-title { font-weight: 700; font-size: 0.96rem; color: #4ade80; margin-bottom: 3px; }
+    .success-sub { font-size: 0.81rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── SIDEBAR ── */
+    .side-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 28px; margin-bottom: 18px; transition: border-color 0.25s, transform 0.2s; }
+    .side-card:hover { border-color: rgba(108,99,255,0.35); transform: translateY(-2px); }
+    .side-card-title { font-weight: 700; font-size: 0.96rem; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+
+    .info-row { margin-bottom: 16px; }
+    .info-row:last-child { margin-bottom: 0; }
+    .info-bar { height: 4px; border-radius: 3px; margin-bottom: 9px; }
+    .info-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+    .info-value { font-size: 0.87rem; font-weight: 600; color: #e2e4f0; }
+
+    .team-member { display: flex; align-items: center; gap: 13px; padding: 13px 14px; background: var(--bg-card2); border-radius: 13px; margin-bottom: 10px; border: 1px solid var(--border); transition: border-color 0.2s; }
+    .team-member:hover { border-color: rgba(108,99,255,0.3); }
+    .team-member:last-child { margin-bottom: 0; }
+    .team-avatar { width: 42px; height: 42px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem; flex-shrink: 0; }
+    .team-name { font-weight: 600; font-size: 0.86rem; }
+    .team-id { font-size: 0.73rem; color: var(--text-muted); margin-top: 2px; }
+
+    .project-link { display: flex; align-items: center; gap: 11px; color: #c4c1ff; text-decoration: none; font-size: 0.84rem; padding: 12px 15px; border-radius: 13px; background: rgba(108,99,255,0.06); border: 1px solid rgba(108,99,255,0.16); transition: all 0.22s; margin-bottom: 10px; font-weight: 500; }
+    .project-link:last-child { margin-bottom: 0; }
+    .project-link:hover { background: rgba(108,99,255,0.14); border-color: rgba(108,99,255,0.4); color: #fff; transform: translateX(5px); }
+    .link-icon { width: 30px; height: 30px; background: rgba(108,99,255,0.14); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 0.88rem; flex-shrink: 0; }
+    .link-arrow { margin-left: auto; color: var(--text-muted); font-size: 0.75rem; transition: transform 0.2s; }
+    .project-link:hover .link-arrow { transform: translateX(3px); color: #fff; }
+
+    .faq-item { border-bottom: 1px solid var(--border); padding: 14px 0; cursor: pointer; }
+    .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; font-size: 0.86rem; font-weight: 600; gap: 10px; transition: color 0.2s; }
+    .faq-item:hover .faq-q { color: #a89fff; }
+    .faq-arrow { width: 24px; height: 24px; background: var(--bg-card2); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 0.62rem; color: var(--text-muted); flex-shrink: 0; transition: transform 0.28s, background 0.2s; }
+    .faq-arrow.open { transform: rotate(180deg); background: rgba(108,99,255,0.18); color: #a89fff; }
+    .faq-a { font-size: 0.81rem; color: var(--text-muted); margin-top: 11px; line-height: 1.7; display: none; border-left: 2px solid var(--accent); padding-left: 12px; }
+    .faq-a.show { display: block; animation: fadeUp 0.28s ease; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(-5px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ── FOOTER ── */
+    footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 34px 0; margin-top: 70px; }
+    .footer-brand { font-weight: 700; display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .footer-sub { font-size: 0.79rem; color: var(--text-muted); }
+    .footer-link { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-link:hover { color: #fff; }
+
+    /* ── BG GLOW DECORATION ── */
+    .bg-glow { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .glow { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.06; }
+    .glow-1 { width: 500px; height: 500px; background: #6c63ff; top: -150px; left: -150px; }
+    .glow-2 { width: 400px; height: 400px; background: #a855f7; bottom: 50px; right: -120px; }
+    .glow-3 { width: 300px; height: 300px; background: #22c55e; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0.03; }
+    .container { position: relative; z-index: 1; }
+
+    /* ── TYPING INDICATOR ── */
+    .typing-dots { display: none; gap: 4px; align-items: center; padding: 8px 0; }
+    .typing-dots.show { display: flex; }
+    .typing-dots span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: bounce 1.2s infinite; }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+
+    /* ── FOCUS GLOW ON INPUTS ── */
+    .input-group-icon { position: relative; }
+    .input-group-icon .field-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 0.9rem; pointer-events: none; }
+    .input-group-icon .form-control { padding-left: 40px; }
+  </style>
+</head>
+<body>
+
+
+<div class="bg-glow">
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="glow glow-3"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div class="brand-logo"><span></span><span></span><span></span><span></span></div>StudyPlan
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end gap-2" id="navMenu">
+      <ul class="navbar-nav align-items-center gap-1 me-3">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="planner.html">Planner</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container">
+    
+    <h1>We'd Love to<br><span>Hear From You</span></h1>
+    <p class="subtitle">Got a question, idea, or just want to say hi? We read every message and reply as fast as we can. Don't be shy!</p>
+    <div class="hero-cards">
+      <div class="hero-pill"><span></span> Usually replies within 24hrs</div>
+      <div class="hero-pill"><span></span> Student-built project</div>
+      <div class="hero-pill"><span></span> Made with care</div>
+    </div>
+  </div>
+</section>
+
+<div class="container pb-5">
+  <div class="row g-4">
+
+    <!-- ── CONTACT FORM ── -->
+    <div class="col-lg-7">
+      <div class="form-card">
+        <div class="form-section-title">
+          <div class="icon"></div> Send Us a Message
+        </div>
+        <div class="form-subtitle">Fill in the form below — we promise it only takes 2 minutes!</div>
+
+        <!-- SUCCESS BANNER -->
+        <div class="success-banner" id="successBanner">
+          <div class="success-icon"></div>
+          <div>
+            <div class="success-title">Your message is on its way!</div>
+            <div class="success-sub">Thanks for reaching out! We've received your message and will get back to you shortly. Have a great study session! </div>
+          </div>
+        </div>
+
+        <!-- NAME ROW -->
+        <div class="row g-3 mb-3">
+          <div class="col-sm-6">
+            <label class="form-label"> First Name <span class="req">*</span></label>
+            <input type="text" class="form-control" id="firstName" placeholder="e.g. Kavindu" maxlength="50" autocomplete="given-name"/>
+            <div class="error-msg" id="firstNameErr"> Please enter your first name.</div>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label"> Last Name <span class="req">*</span></label>
+            <input type="text" class="form-control" id="lastName" placeholder="e.g. Kumarasinghe" maxlength="50" autocomplete="family-name"/>
+            <div class="error-msg" id="lastNameErr"> Please enter your last name.</div>
+          </div>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="mb-3">
+          <label class="form-label"> Email Address <span class="req">*</span></label>
+          <input type="email" class="form-control" id="emailAddr" placeholder="yourname@example.com" autocomplete="email"/>
+          <div class="input-hint">We'll only use this to reply to you — no spam, ever! </div>
+          <div class="error-msg" id="emailErr"> Hmm, that doesn't look like a valid email. Try again!</div>
+        </div>
+
+        <!-- SUBJECT -->
+        <div class="mb-3">
+          <label class="form-label"> What's this about? <span class="req">*</span></label>
+          <select class="form-select" id="msgSubject">
+            <option value="">-- Pick a topic that fits best --</option>
+            <option value="feedback"> I have some feedback</option>
+            <option value="bug"> I found a bug</option>
+            <option value="feature"> I have a feature idea</option>
+            <option value="question"> I have a question</option>
+            <option value="compliment"> I just want to say something nice!</option>
+            <option value="other"> Something else</option>
+          </select>
+          <div class="error-msg" id="subjectErr"> Please pick a topic so we can help you better.</div>
+        </div>
+
+        <!-- MESSAGE -->
+        <div class="mb-3">
+          <label class="form-label"> Your Message <span class="req">*</span></label>
+          <textarea class="form-control" id="msgBody" placeholder="Tell us what's on your mind! The more detail you share, the better we can help you " maxlength="1000"></textarea>
+          <div class="char-count">
+            <span class="cnt" id="charCount">0</span> / 1000 characters
+            <span id="charLabel" style="margin-left:6px;"></span>
+          </div>
+          <div class="error-msg" id="msgErr"> Your message needs to be at least 20 characters.</div>
+        </div>
+
+        <!-- TYPING DOTS (shows while "sending") -->
+        <div class="typing-dots" id="typingDots">
+          <span></span><span></span><span></span>
+          <span style="margin-left:8px; font-size:0.78rem; color:var(--text-muted);">Sending your message...</span>
+        </div>
+
+        <button class="btn-submit" id="submitBtn" onclick="submitForm()">
+          Send My Message <span class="send-icon">→</span>
+        </button>
+      </div>
+      
+      <div style="height: 30px;"></div>
+
+      <!-- CONTACT EMAILS -->
+
+      <div class="side-card">
+        <div class="side-card-title">Contact Us Directly</div>
+        <div class="team-member">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#6c63ff,#a855f7)">K</div>
+          <div>
+            <div class="team-name">K.M.D. Kumarasinghe</div>
+            <a href="mailto:ict2023070@as.rjt.ac.lk" style="font-size:.78rem; color:#a89fff;">ict2023070@as.rjt.ac.lk</a>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#22c55e,#06b6d4)">Y</div>
+          <div>
+            <div class="team-name">Y.S.S. Arachchi</div>
+            <a href="mailto:ict2023071@as.rjt.ac.lk" style="font-size:.78rem; color:#a89fff;">ict2023071@as.rjt.ac.lk</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIDEBAR ── -->
+    <div class="col-lg-5">
+
+      <!-- DEVELOPER INFO -->
+      <div class="side-card">
+        <div class="side-card-title"> About This Project</div>
+        <div class="info-row">
+          <div class="info-bar" style="background:linear-gradient(90deg,#6c63ff,#a855f7)"></div>
+          <div class="info-label">University</div>
+          <div class="info-value">Rajarata University of Sri Lanka</div>
+        </div>
+        <div class="info-row">
+          <div class="info-bar" style="background:linear-gradient(90deg,#22c55e,#06b6d4)"></div>
+          <div class="info-label">Department</div>
+          <div class="info-value">Department of Computing</div>
+        </div>
+        <div class="info-row">
+          <div class="info-bar" style="background:linear-gradient(90deg,#3b82f6,#f97316)"></div>
+          <div class="info-label">Course</div>
+          <div class="info-value">ICT 2204 – Web Technologies &amp; Web Design</div>
+        </div>
+      </div>
+
+      <!-- TEAM -->
+      <div class="side-card">
+        <div class="side-card-title"> Meet Team StackTwins</div>
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:16px;">Two students, one mission — making study life easier for everyone! </p>
+        <div class="team-member">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#6c63ff,#a855f7)">K</div>
+          <div>
+            <div class="team-name">K.M.D. Kumarasinghe</div>
+            <div class="team-id">ICT/2023/070 &nbsp;·&nbsp; Co-developer</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#22c55e,#06b6d4)">Y</div>
+          <div>
+            <div class="team-name">Y.S.S. Arachchi</div>
+            <div class="team-id">ICT/2023/071 &nbsp;·&nbsp; Co-developer</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT LINKS -->
+      <div class="side-card">
+        <div class="side-card-title">🔗 Explore the Project</div>
+        <a href="https://github.com/mavithdk/ICT_2204_teamStackTwins.git" target="_blank" class="project-link">
+          <div class="link-icon"></div> GitHub Repository <span class="link-arrow">→</span>
+        </a>
+        <a href="proposal.pdf" target="_blank" class="project-link">
+          <div class="link-icon"></div> Project Proposal PDF <span class="link-arrow">→</span>
+        </a>
+      </div>
+
+      <!-- FAQ -->
+      <div class="side-card">
+        <div class="side-card-title"> Quick Answers</div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Will my data be saved if I close the tab? <div class="faq-arrow">▼</div></div>
+          <div class="faq-a">Yes!  Everything is saved automatically in your browser's Local Storage. Close the tab, come back later — your subjects and tasks will still be there waiting for you.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Does it work on my phone? <div class="faq-arrow">▼</div></div>
+          <div class="faq-a">Absolutely! StudyPlan is fully responsive. Whether you're on a phone, tablet, or laptop — it adapts to look great on any screen size.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Is StudyPlan really free? <div class="faq-arrow">▼</div></div>
+          <div class="faq-a">100% free, always! No accounts to create, no subscriptions, no hidden fees. We built this to help students — not to make money from them.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">How do I delete all my data? <div class="faq-arrow">▼</div></div>
+          <div class="faq-a">Open your browser's Developer Tools (F12), go to Application → Local Storage, and clear the entries for this site. Or just open a new browser and start fresh! </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-4 mb-3 mb-md-0">
+        <div class="footer-brand">
+          <div class="brand-logo"><span></span><span></span><span></span><span></span></div>StudyPlan
+        </div>
+        <div class="footer-sub">Smart Study Planner &copy; Stack Twins</div>
+      </div>
+      <div class="col-md-4 text-center mb-3 mb-md-0">
+        <a href="index.html" class="footer-link me-3">Home</a>
+        <a href="planner.html" class="footer-link me-3">Planner</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </div>
+      <div class="col-md-4 text-md-end">
+        <span style="font-size:0.8rem;color:var(--text-muted);">Made with 💜 by Team StackTwins &bull; 2025</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // ── CHAR COUNTER WITH COLOR FEEDBACK ──
+  document.getElementById('msgBody').addEventListener('input', function() {
+    const len = this.value.length;
+    const cnt = document.getElementById('charCount');
+    const lbl = document.getElementById('charLabel');
+    cnt.textContent = len;
+    cnt.className = 'cnt';
+    lbl.textContent = '';
+    if (len >= 950) { cnt.classList.add('char-danger'); lbl.textContent = ' Almost at limit!'; }
+    else if (len >= 800) { cnt.classList.add('char-warning'); lbl.textContent = ' Getting long...'; }
+    else if (len >= 20) { lbl.textContent = ' Good length'; lbl.style.color = '#4ade80'; lbl.style.fontSize = '0.72rem'; }
+  });
+
+  // ── FORM VALIDATION & SUBMIT ──
+  function validate(id, condition, errId) {
+    const el = document.getElementById(id), err = document.getElementById(errId);
+    if (!condition) { el.classList.add('field-error'); err.classList.add('show'); return false; }
+    el.classList.remove('field-error'); err.classList.remove('show'); return true;
+  }
+
+// function to recieve user feedback messages via "Formspree" free service   
+async function submitForm() {
+  const fn = document.getElementById('firstName').value.trim();
+  const ln = document.getElementById('lastName').value.trim();
+  const em = document.getElementById('emailAddr').value.trim();
+  const sb = document.getElementById('msgSubject').value;
+  const ms = document.getElementById('msgBody').value.trim();
+
+  let valid = true;
+  if (!validate('firstName', fn.length > 0,                        'firstNameErr')) valid = false;
+  if (!validate('lastName',  ln.length > 0,                        'lastNameErr'))  valid = false;
+  if (!validate('emailAddr', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em),'emailErr'))     valid = false;
+  if (!validate('msgSubject',sb !== '',                             'subjectErr'))   valid = false;
+  if (!validate('msgBody',   ms.length >= 20,                      'msgErr'))       valid = false;
+  if (!valid) return;
+
+  const btn  = document.getElementById('submitBtn');
+  const dots = document.getElementById('typingDots');
+  btn.style.display = 'none';
+  dots.classList.add('show');
+
+  // ── Send to Formspree ──
+  const response = await fetch('https://formspree.io/f/xyzabcde', {  // ← paste your URL here
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name:    fn + ' ' + ln,
+      email:   em,
+      subject: sb,
+      message: ms
+    })
+  });
+
+  dots.classList.remove('show');
+  btn.style.display = 'flex';
+
+  if (response.ok) {
+    const banner = document.getElementById('successBanner');
+    banner.classList.add('show');
+    banner.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    ['firstName','lastName','emailAddr','msgSubject','msgBody'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    document.getElementById('charCount').textContent = '0';
+    document.getElementById('charLabel').textContent = '';
+    setTimeout(() => banner.classList.remove('show'), 7000);
+  } else {
+    alert('Something went wrong. Please try emailing us directly.');
+  }
+}
+
+
+  // ── FAQ TOGGLE ──
+  function toggleFaq(el) {
+    const ans = el.querySelector('.faq-a'), arr = el.querySelector('.faq-arrow');
+    const isOpen = ans.classList.contains('show');
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('show'));
+    document.querySelectorAll('.faq-arrow').forEach(a => a.classList.remove('open'));
+    if (!isOpen) { ans.classList.add('show'); arr.classList.add('open'); }
+  }
+
+  // ── CLEAR ERRORS ON TYPING ──
+  ['firstName','lastName','emailAddr','msgSubject','msgBody'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function() {
+      this.classList.remove('field-error');
+      const err = document.getElementById(id + 'Err');
+      if (err) err.classList.remove('show');
+    });
+  });
+
+  // ── ENTER KEY ON INPUTS ──
+  ['firstName','lastName','emailAddr'].forEach(id => {
+    document.getElementById(id).addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); submitForm(); }
+    });
+  });
+</script>
+
+<script src="js/auth.js"></script>
+
+</body>
+</html>
